@@ -1,7 +1,7 @@
-name: obg9
-type: drupal9
+name: obg
+type: drupal10
 docroot: web
-php_version: "8.1"
+php_version: "8.2"
 webserver_type: apache-fpm
 router_http_port: "80"
 router_https_port: "443"
@@ -17,6 +17,11 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
 nodejs_version: "16"
+disable_settings_management: true
+hooks:
+  post-start:
+  - composer: global require drush/drush:^8.4.12
+
 
 # Key features of ddev's config.yaml:
 

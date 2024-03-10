@@ -1,0 +1,86 @@
+#ddev-generated
+
+http:
+  routers:
+    
+    
+    obg9-web-80-http:
+      
+      rule: HostRegexp(`obg9.ddev.site`)
+      
+      service: "obg9-web-80-http"
+      tls: false
+      entrypoints:
+        - http-80
+    
+    
+    obg9-web-8025-http:
+      
+      rule: HostRegexp(`obg9.ddev.site`)
+      
+      service: "obg9-web-8025-http"
+      tls: false
+      entrypoints:
+        - http-8025
+    
+    
+    
+    
+    
+    
+    obg9-web-80-https:
+      
+      rule: HostRegexp(`obg9.ddev.site`)
+      
+      service: "obg9-web-80-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-443
+    
+    
+    obg9-web-8025-https:
+      
+      rule: HostRegexp(`obg9.ddev.site`)
+      
+      service: "obg9-web-8025-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-8026
+    
+    
+
+  services:
+    
+    obg9-web-80-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-obg9-web:80
+    
+    obg9-web-8025-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-obg9-web:8025
+    
+    obg9-web-80-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-obg9-web:80
+    
+    obg9-web-8025-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-obg9-web:8025
+    
+
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/obg9.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/obg9.key
+
